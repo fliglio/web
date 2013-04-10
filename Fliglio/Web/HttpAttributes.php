@@ -13,6 +13,8 @@ class HttpAttributes {
 
 	const METHOD_POST = 'post';
 	const METHOD_GET = 'get';
+	const METHOD_PUT = 'put';
+	const METHOD_DELETE = 'delete';
 
 	private static $protocol;
 	private static $httpHost;
