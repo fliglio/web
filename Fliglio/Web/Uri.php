@@ -70,6 +70,27 @@ class Uri {
 		return $inst->join($extra);
 	}
 
+	public function addParams(array $params) {
+		$parsedUrl   = parse_url((string)$this);
+		
+		$parts       = explode("?", (string)$this);
+		$base        = array_shift($parts);
+
+		$query       = array();
+		$queryString = isset($parsedUrl['query']) ? $parsedUrl['query'] : '';
+		parse_str($queryString, $query);
+
+		$query = array_merge($query, $params);
+		
+		$this->setUri(sprintf( 
+			"%s%s%s",
+			$base,
+			!empty($query) ? '?' : '',
+			http_build_query($query)
+		));
+		return $this;
+	}
+
 	/**
 	 * Add supplied parameters to supplied url & return result.
 	 * 
@@ -81,24 +102,9 @@ class Uri {
 	 * @return Url      merged url
 	 */
 	public static function merge(Uri $url, array $params = array()) {
-	
-		$parsedUrl   = parse_url($url);
-		
-		$parts       = explode("?", $url);
-		$base        = array_shift($parts);
-
-		$query       = array();
-		$queryString = isset($parsedUrl['query']) ? $parsedUrl['query'] : '';
-		parse_str($queryString, $query);
-
-		$query = array_merge($query, $params);
-	
-		return new self(sprintf( 
-			"%s%s%s",
-			$base,
-			!empty($query) ? '?' : '',
-			http_build_query($query)
-		));
+		$url = clone $url;
+		$url->addParams($params);
+		return $url;
 	}
 	
 	/**

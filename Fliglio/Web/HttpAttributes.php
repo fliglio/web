@@ -19,7 +19,41 @@ class HttpAttributes {
 	private static $protocol;
 	private static $httpHost;
 	private static $method;
+	
+	public static function apacheDefaults() {
+		// Configure Web Package
+		$isHttps = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on';
 
+		HttpAttributes::setProtocol($isHttps ? HttpAttributes::HTTPS : HttpAttributes::HTTP);
+
+		HttpAttributes::setHttpHost(
+			isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : (
+				isset($_SERVER['HOSTNAME']) ? $_SERVER['HOSTNAME'] : (
+					isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : (
+						isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : (
+							'localhost'
+						)
+					)
+				)
+			)
+		);
+
+		switch (isset($_SERVER['REQUEST_METHOD']) ? strtolower($_SERVER['REQUEST_METHOD']) : null) {
+			case 'post' : 
+				HttpAttributes::setMethod(HttpAttributes::METHOD_POST);
+				break;
+			case 'get' : 
+				HttpAttributes::setMethod(HttpAttributes::METHOD_GET);
+				break;
+			case 'put' : 
+				HttpAttributes::setMethod(HttpAttributes::METHOD_PUT);
+				break;
+			case 'delete' : 
+				HttpAttributes::setMethod(HttpAttributes::METHOD_DELETE);
+				break;
+		}
+	}
+	
 	/**
 	 * Override the detected value for current request protocol
 	 */
