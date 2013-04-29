@@ -15,6 +15,7 @@ class HttpAttributes {
 	const METHOD_GET = 'get';
 	const METHOD_PUT = 'put';
 	const METHOD_DELETE = 'delete';
+	const METHOD_OPTIONS = 'options';
 
 	private static $protocol;
 	private static $httpHost;
@@ -50,6 +51,9 @@ class HttpAttributes {
 				break;
 			case 'delete' : 
 				HttpAttributes::setMethod(HttpAttributes::METHOD_DELETE);
+				break;
+			case 'options' : 
+				HttpAttributes::setMethod(HttpAttributes::METHOD_OPTIONS);
 				break;
 		}
 	}
