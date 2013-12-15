@@ -18,7 +18,7 @@ print($response->getContent());
 
 See test/CurlTest.php for working examples
 
-Concise REST calls using Curl
+Concise REST calls
 --------------------------------------------
 Example:
 ```php
