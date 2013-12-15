@@ -36,20 +36,20 @@ class RestClientTest extends PHPUnit_Framework_TestCase {
 		$resource
 			->accept(MediaType::JSON)
 			->path('/api/user')
-			->path(86)
+			->path(1)
 			->get();
 
-		$this->assertEquals(CurlFactory::get()->request->getUrl(), 'https://localhost:8080/api/user/86');
+		$this->assertEquals(CurlFactory::get()->request->getUrl(), 'https://localhost:8080/api/user/1');
 	}
 
 	public function testNonSsl() {
 		$this->resource
 			->accept(MediaType::JSON)
 			->path('/api/user')
-			->path(86)
+			->path(1)
 			->get();
 
-		$this->assertEquals(CurlFactory::get()->request->getUrl(), 'http://localhost:8080/api/user/86');
+		$this->assertEquals(CurlFactory::get()->request->getUrl(), 'http://localhost:8080/api/user/1');
 	}
 
 	public function testAddHeaders() {
@@ -57,7 +57,7 @@ class RestClientTest extends PHPUnit_Framework_TestCase {
 			->accept(MediaType::JSON)
 			->addHeader('Authorization: LKJSDF21AIU87LK213ADFS;')
 			->path('/api/user')
-			->path(86)
+			->path(1)
 			->get();
 
 		$headers = array();
@@ -73,7 +73,7 @@ class RestClientTest extends PHPUnit_Framework_TestCase {
 			->accept(MediaType::XML)
 			->addHeader('Authorization: LKJSDF21AIU87LK213ADFS;')
 			->path('/api/user')
-			->path(86)
+			->path(1)
 			->get();
 
 		$headers = array();
@@ -88,7 +88,7 @@ class RestClientTest extends PHPUnit_Framework_TestCase {
 		$this->resource
 			->accept(MediaType::JSON)
 			->path('/api/user')
-			->path(86);
+			->path(1);
 
 		$resp = $this->resource->get();
 
@@ -99,7 +99,7 @@ class RestClientTest extends PHPUnit_Framework_TestCase {
 		$this->resource
 			->accept(MediaType::XML)
 			->path('/api/user')
-			->path(86);
+			->path(1);
 
 		$resp = $this->resource->get();
 
@@ -143,7 +143,7 @@ class RestClientTest extends PHPUnit_Framework_TestCase {
 		$this->resource
 			->accept(MediaType::JSON)
 			->path('/api/user')
-			->path(86)
+			->path(1)
 			->get();
 
 		$this->assertEquals(CurlFactory::get()->request->getMethod(), Curl::GET);
@@ -171,7 +171,7 @@ class RestClientTest extends PHPUnit_Framework_TestCase {
 		$this->resource
 			->accept(MediaType::JSON)
 			->path('/api/user')
-			->path(86)
+			->path(1)
 			->delete();
 
 		$this->assertEquals(CurlFactory::get()->request->getMethod(), Curl::DELETE);
