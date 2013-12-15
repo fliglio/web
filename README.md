@@ -44,4 +44,4 @@ Unit Tests
 ----------
 Run tests using:
 
-	phpunit test
+	$ phpunit test
