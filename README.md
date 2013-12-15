@@ -43,4 +43,5 @@ See test/RestTest.php for working examples
 Unit Tests
 ----------
 Run tests using:
+
 	phpunit test
