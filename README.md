@@ -1,39 +1,40 @@
 # fliglio-web
 
-2. Simplified interface to PHP's curl functions
+Simplified interface to PHP's curl functions
+--------------------------------------------
 Example:
-```php
-use Fliglio\Web\Curl;
-use Fliglio\Web\CurlRequest;
-use Fliglio\Web\CurlResponse;
+	<?php
 
-$curl = new Curl();
-$response = $curl->request(new CurlRequest(Curl::GET, 'http://www.google.com'));
+	use Fliglio\Web\Curl;
+	use Fliglio\Web\CurlRequest;
+	use Fliglio\Web\CurlResponse;
 
-print($response->getContent());
-```
+	$curl = new Curl();
+	$response = $curl->request(new CurlRequest(Curl::GET, 'http://www.google.com'));
+
+	print($response->getContent());
+
 See test/CurlTest.php for working examples
 
-2. Encapsulated REST calls using Curl
+Encapsulated REST calls using Curl
+--------------------------------------------
 Example:
-```php
-use Fliglio\Web\RestResource;
-use Fliglio\Web\MediaType;
+	<?php
 
-$resource = new RestResource::build('localhost:8080', true);
-	->accept(MediaType::JSON)
-	->addHeader('Authorization: LKJSDF21AIU87LK213ADFS;')
-	->path('/api/user')
-	->path(1);
+	use Fliglio\Web\RestResource;
+	use Fliglio\Web\MediaType;
 
-$response = $resource->get();
+	$resource = new RestResource::build('localhost:8080', true);
+		->accept(MediaType::JSON)
+		->addHeader('Authorization: LKJSDF21AIU87LK213ADFS;')
+		->path('/api/user')
+		->path(1);
 
-print($response->getContent());
-```
+	$response = $resource->get();
+
+	print($response->getContent());
 See test/RestTest.php for working examples
 
 2. Tests
 Run tests using:
-```bash
-phpunit test
-```
+	phpunit test
