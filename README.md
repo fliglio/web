@@ -40,6 +40,7 @@ print($response->getContent());
 
 See test/RestTest.php for working examples
 
-2. Tests
+Unit Tests
+----------
 Run tests using:
 	phpunit test
