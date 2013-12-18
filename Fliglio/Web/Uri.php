@@ -10,6 +10,9 @@ class Uri {
 	
 	/* String version of the url */
 	protected $url;
+
+	/* Array of url parts */
+	protected $parts;
 	
 	/**
 	 * Create a new Url
@@ -22,6 +25,22 @@ class Uri {
 	
 	public static function get($str) { 
 		return new self($str); 
+	}
+	
+	public function getPath() {
+		return isset($this->parts['path']) ? $this->parts['path'] : '';
+	}
+	
+	public function getScheme() {
+		return isset($this->parts['scheme']) ? $this->parts['scheme'] : '';
+	}
+	
+	public function getQuery() {
+		return isset($this->parts['query']) ? $this->parts['query'] : '';
+	}
+
+	public function getHost() {
+		return isset($this->parts['host']) ? $this->parts['host'] : '';
 	}
 	
 	/**
@@ -41,6 +60,8 @@ class Uri {
 	 */
 	public function setUri($val) { 
 		$this->url = (string) $val;
+		$this->parts = parse_url($this->url);
+
 		return $this;
 	}
 
