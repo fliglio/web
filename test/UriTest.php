@@ -28,5 +28,22 @@ class UriTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->refUri->getScheme(), 'http');
 	}
 
+	public function testFactory() {
+		// given
+		$expected = Uri::get("http://foo:8080");
+		$expectedHttps = Uri::get("https://foo:8080");
+		// when
+
+		$found = Uri::fromHostAndPort("foo", 8080);
+		$found2 = Uri::fromHostAndPort("foo", 8080, "http");
+		$foundHttps = Uri::fromHostAndPort("foo", 8080, "https");
+
+		// then
+
+		$this->assertEquals($expected, $found);
+		$this->assertEquals($expected, $found2);
+		$this->assertEquals($expectedHttps, $foundHttps);
+
+	}
 }
 
