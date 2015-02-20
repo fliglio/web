@@ -14,6 +14,7 @@ class HttpAttributes {
 	const METHOD_POST = 'post';
 	const METHOD_GET = 'get';
 	const METHOD_PUT = 'put';
+	const METHOD_PATCH = 'patch';
 	const METHOD_DELETE = 'delete';
 	const METHOD_OPTIONS = 'options';
 
@@ -48,6 +49,9 @@ class HttpAttributes {
 				break;
 			case 'put' : 
 				HttpAttributes::setMethod(HttpAttributes::METHOD_PUT);
+				break;
+			case 'patch' : 
+				HttpAttributes::setMethod(HttpAttributes::METHOD_PATCH);
 				break;
 			case 'delete' : 
 				HttpAttributes::setMethod(HttpAttributes::METHOD_DELETE);
