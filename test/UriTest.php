@@ -9,7 +9,7 @@ class UriTest extends PHPUnit_Framework_TestCase {
 	private $refUri;
 
 	public function setup() {
-		$this->refUri = Uri::get('http://www.google.com/test/route?key=value&key2=value');
+		$this->refUri = Uri::get('http://www.google.com:80/test/route?key=value&key2=value');
 	}
 
 	public function testQueryParams() {
@@ -22,6 +22,9 @@ class UriTest extends PHPUnit_Framework_TestCase {
 
 	public function testHost() {
 		$this->assertEquals($this->refUri->getHost(), 'www.google.com');
+	}
+	public function testPort() {
+		$this->assertEquals($this->refUri->getPort(), '80');
 	}
 
 	public function testScheme() {

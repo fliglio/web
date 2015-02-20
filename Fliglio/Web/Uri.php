@@ -42,6 +42,9 @@ class Uri {
 	public function getHost() {
 		return isset($this->parts['host'])?$this->parts['host']:'';
 	}
+	public function getPort() {
+		return isset($this->parts['port'])?$this->parts['port']:'';
+	}
 
 	/**
 	 * Get url as a string
