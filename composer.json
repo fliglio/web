@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.3",
+        "lib-curl": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.1.0"
