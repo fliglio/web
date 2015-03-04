@@ -15,20 +15,11 @@ class BasicResponse implements ResponseReader {
 		$this->body = $body;
 		$this->headers = $headers;
 	}
-	public function setStatus($status) {
-		$this->status = $status;
-	}
 	public function getStatus() {
 		return $this->status;
 	}
-	public function setBody($body) {
-		$this->body = $body;
-	}
 	public function getBody() {
 		return $this->body;
-	}
-	public function setHeaders(array $headers) {
-		$this->headers = $headers;
 	}
 	public function getHeaders() {
 		return $this->headers;
