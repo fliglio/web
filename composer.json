@@ -10,7 +10,8 @@
     ],
     "require": {
         "php": ">=5.3",
-        "lib-curl": "*"
+        "lib-curl": "*",
+        "fliglio/http": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.1.0"

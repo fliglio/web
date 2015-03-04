@@ -4,8 +4,47 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d2cc67fded1038411e49f6dccffc2ad4",
-    "packages": [],
+    "hash": "c611a74e226717ac7bf04a0608b87d57",
+    "packages": [
+        {
+            "name": "fliglio/http",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fliglio/http.git",
+                "reference": "093ac29ea028eee8fd9938576195c908008e065b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fliglio/http/zipball/093ac29ea028eee8fd9938576195c908008e065b",
+                "reference": "093ac29ea028eee8fd9938576195c908008e065b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fliglio\\Http\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Schwartz",
+                    "email": "benschw@gmail.com"
+                }
+            ],
+            "time": "2015-02-27 20:51:47"
+        }
+    ],
     "packages-dev": [
         {
             "name": "phpunit/php-code-coverage",
@@ -752,7 +791,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "fliglio/http": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
