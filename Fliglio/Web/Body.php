@@ -2,6 +2,8 @@
 
 namespace Fliglio\Web;
 
+use Fliglio\Http\Exceptions\BadRequestException;
+
 class Body {
 	private $body;
 
@@ -22,6 +24,17 @@ class Body {
 			$arr = json_decode($this->body, true);
 		}
 
-		return $mapper->unmarshal($arr);
+
+		$entity = $mapper->unmarshal($arr);
+
+		if ($entity instanceof Validation) {
+			try {
+				$entity->validate();
+			} catch (ValidationException $e) {
+				$errors = $e->getValidationErrors();
+				throw new BadRequestException(implode($errors, ", "));
+			}
+		}
+		return $entity;
 	}
 }

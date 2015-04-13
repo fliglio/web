@@ -11,7 +11,8 @@
     "require": {
         "php": ">=5.3",
         "lib-curl": "*",
-        "fliglio/http": "dev-master"
+        "fliglio/http": "dev-master",
+        "werx/validation": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.1.0"
