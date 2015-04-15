@@ -12,7 +12,9 @@
         "php": ">=5.3",
         "lib-curl": "*",
         "fliglio/http": "2.1.*",
-        "werx/validation": "1.*"
+        "symfony/validator": "2.*",
+        "doctrine/annotations": "1.*",
+        "doctrine/cache": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.1.0"
