@@ -11,7 +11,7 @@
     "require": {
         "php": ">=5.3",
         "lib-curl": "*",
-        "fliglio/http": "dev-master",
+        "fliglio/http": "2.1.*",
         "werx/validation": "1.*"
     },
     "require-dev": {
