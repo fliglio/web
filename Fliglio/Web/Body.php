@@ -31,8 +31,7 @@ class Body {
 			try {
 				$entity->validate();
 			} catch (ValidationException $e) {
-				$errors = $e->getValidationErrors();
-				throw new BadRequestException(implode($errors, ", "));
+				throw new BadRequestException($e->getMessage());
 			}
 		}
 		return $entity;
