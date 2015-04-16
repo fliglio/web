@@ -1,5 +1,7 @@
 # fliglio-web
 
+[![Build Status](https://travis-ci.org/fliglio/web.svg?branch=master)](https://travis-ci.org/fliglio/web)
+
 Simplified interface to PHP's curl functions
 --------------------------------------------
 Example:
