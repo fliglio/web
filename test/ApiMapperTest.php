@@ -11,7 +11,7 @@ class ApiMapperTest extends \PHPUnit_Framework_TestCase {
 		// given
 		$mapper = new FooApiMapper();
 		
-		$entity = new FooApi("foo");
+		$entity = new Foo("foo");
 		$vo = ["myProp" => "foo"];
 
 		// when
@@ -26,12 +26,12 @@ class ApiMapperTest extends \PHPUnit_Framework_TestCase {
 	public function testStaticApiMapper() {
 
 		// given
-		$entity = new FooApi("foo");
+		$entity = new Foo("foo");
 		$vo = ["myProp" => "foo"];
 
 		// when
 		$foundVo = $entity->marshal();
-		$foundEntity = FooApi::unmarshal($vo);
+		$foundEntity = Foo::unmarshal($vo);
 
 		// then
 		$this->assertEquals($entity, $foundEntity);
@@ -40,7 +40,7 @@ class ApiMapperTest extends \PHPUnit_Framework_TestCase {
 	public function testStaticApiMapperWithoutNamingConvention() {
 
 		// given
-		$entity = new Bar("bar", new FooApi("foo"), [new FooApi("baz"), new FooApi("biz")]);
+		$entity = new Bar("bar", new Foo("foo"), [new Foo("baz"), new Foo("biz")]);
 
 		// when
 		$vo = $entity->marshal();
@@ -56,7 +56,7 @@ class ApiMapperTest extends \PHPUnit_Framework_TestCase {
 		$mapper = new CollectionApiMapper(new FooApiMapper());
 		
 
-		$entities = [new FooApi("foo"), new FooApi("bar")];
+		$entities = [new Foo("foo"), new Foo("bar")];
 		$vo = [["myProp" => "foo"], ["myProp" => "bar"]];
 
 		// when

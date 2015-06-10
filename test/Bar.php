@@ -21,12 +21,12 @@ class Bar implements Validation, MappableApi {
     /**
      * @Assert\Valid
      */
-	private $foo; // FooApi
+	private $foo; // Foo
 
     /**
      * @Assert\Valid
      */
-	private $foos; // []FooApi
+	private $foos; // []Foo
 
 
 	public function __construct($n, $f, array $fs = array()) {

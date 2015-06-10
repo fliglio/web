@@ -16,7 +16,7 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testBindMapping() {
 
 		// given
-		$expected = new FooApi("foo");
+		$expected = new Foo("foo");
 		$fooJson = '{"myProp": "foo"}';
 
 		$body = new Body($fooJson, 'application/json');
@@ -35,7 +35,7 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testBindValidationError() {
 
 		// given
-		$expected = new FooApi("bar");
+		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Body($fooJson, 'application/json');
@@ -49,13 +49,13 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testEntityMapping() {
 
 		// given
-		$expected = new FooApi("foo");
+		$expected = new Foo("foo");
 		$fooJson = '{"myProp": "foo"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
 		// when
-		$found = $body->bind('Fliglio\Web\FooApi');
+		$found = $body->bind('Fliglio\Web\Foo');
 
 		// then
 		$this->assertEquals($expected, $found);
@@ -67,7 +67,7 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testEntityBadApiClass() {
 
 		// given
-		$expected = new FooApi("bar");
+		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
@@ -82,13 +82,13 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testEntityBadApiInterface() {
 
 		// given
-		$expected = new FooApi("bar");
+		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
 		// when
-		$found = $body->bind('Fliglio\Web\FooApiMapper'); // valid class, wrong interface
+		$found = $body->bind('Fliglio\Web\FooMapper'); // valid class, wrong interface
 	}
 
 	/**
@@ -97,12 +97,12 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testEntityValidationError() {
 
 		// given
-		$expected = new FooApi("bar");
+		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
 		// when
-		$found = $body->bind('Fliglio\Web\FooApi');
+		$found = $body->bind('Fliglio\Web\Foo');
 	}
 }
