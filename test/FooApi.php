@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  *
  */
-class FooApi implements Validation, MappableApi {
+class FooApi implements Validation, StaticApiMapper {
 	use ObjectValidationTrait;
 	use MappableApiTrait;
     /**
@@ -24,7 +24,7 @@ class FooApi implements Validation, MappableApi {
 	public function getMyProp() {
 		return $this->myProp;
 	}
-	public function getApiMapper() {
+	public static function getApiMapper() {
 		return new FooApiMapper();
 	}
 }

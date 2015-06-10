@@ -14,7 +14,11 @@ class Entity {
 	public function get() {
 		return $this->body;
 	}
-	public function bind(MappableApi $entityType) {
+	public function bind($entityType) {
+		if (!in_array('Fliglio\Web\StaticApiMapper', class_implements($entityType))) {
+			throw new \Exception($entityType . " doesn't implement Fliglio\Web\StaticApiMapper");
+		}
+		
 		$arr = null;
 		switch($this->contentType) {
 
@@ -24,7 +28,7 @@ class Entity {
 			$arr = json_decode($this->body, true);
 		}
 
-		$entity = $entityType->unmarshal($arr);
+		$entity = $entityType::unmarshal($arr);
 
 		if ($entity instanceof Validation) {
 			try {

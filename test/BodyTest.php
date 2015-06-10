@@ -55,12 +55,42 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		$body = new Entity($fooJson, 'application/json');
 		
 		// when
-		$found = $body->bind(new FooApi());
+		$found = $body->bind('Fliglio\Web\FooApi');
 
 		// then
 		$this->assertEquals($expected, $found);
 	}
 
+	/**
+	 * @expectedException \Exception
+	 */
+	public function testEntityBadApiClass() {
+
+		// given
+		$expected = new FooApi("bar");
+		$fooJson = '{"myProp": "bar"}';
+
+		$body = new Entity($fooJson, 'application/json');
+		
+		// when
+		$found = $body->bind('Fliglio\Web\Foodfsdfsdf'); // not a real class
+	}
+	
+	/**
+	 * @expectedException \Exception
+	 */
+	public function testEntityBadApiInterface() {
+
+		// given
+		$expected = new FooApi("bar");
+		$fooJson = '{"myProp": "bar"}';
+
+		$body = new Entity($fooJson, 'application/json');
+		
+		// when
+		$found = $body->bind('Fliglio\Web\FooApiMapper'); // valid class, wrong interface
+	}
+	
 	/**
 	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
@@ -73,6 +103,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		$body = new Entity($fooJson, 'application/json');
 		
 		// when
-		$found = $body->bind(new FooApi());
+		$found = $body->bind('Fliglio\Web\FooApi');
 	}
 }
