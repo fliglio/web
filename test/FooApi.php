@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class FooApi implements Validation, StaticApiMapper {
 	use ObjectValidationTrait;
-	use MappableApiTrait;
+	use StaticApiMapperTrait;
     /**
      * @Assert\EqualTo(
      *     value = "foo"
