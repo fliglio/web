@@ -46,4 +46,33 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testEntityMapping() {
+
+		// given
+		$expected = new FooApi("foo");
+		$fooJson = '{"myProp": "foo"}';
+
+		$body = new Entity($fooJson, 'application/json');
+		
+		// when
+		$found = $body->bind(new FooApi());
+
+		// then
+		$this->assertEquals($expected, $found);
+	}
+
+	/**
+	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
+	 */
+	public function testEntityValidationError() {
+
+		// given
+		$expected = new FooApi("bar");
+		$fooJson = '{"myProp": "bar"}';
+
+		$body = new Entity($fooJson, 'application/json');
+		
+		// when
+		$found = $body->bind(new FooApi());
+	}
 }
