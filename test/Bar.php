@@ -7,8 +7,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  *
  */
-class Bar implements Validation {
+class Bar implements Validation, MappableApi {
 	use ObjectValidationTrait;
+	use MappableApiTrait;
 
     /**
      * @Assert\EqualTo(
@@ -32,6 +33,10 @@ class Bar implements Validation {
 		$this->name = $n;
 		$this->foo = $f;
 		$this->foos = $fs;
+	}
+	
+	public static function getApiMapper() {
+		return new BarApiMapper();
 	}
 
 	public function getName() {
