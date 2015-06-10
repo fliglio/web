@@ -15,8 +15,8 @@ class Entity {
 		return $this->body;
 	}
 	public function bind($entityType) {
-		if (!in_array('Fliglio\Web\StaticApiMapper', class_implements($entityType))) {
-			throw new \Exception($entityType . " doesn't implement Fliglio\Web\StaticApiMapper");
+		if (!in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
+			throw new \Exception($entityType . " doesn't implement Fliglio\Web\MappableApi");
 		}
 		
 		$arr = null;

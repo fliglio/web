@@ -2,7 +2,7 @@
 
 namespace Fliglio\Web;
 
-interface StaticApiMapper {
-	public static function marshal($entity);
+interface MappableApi {
+	public function marshal();
 	public static function unmarshal($serialized);
 }
