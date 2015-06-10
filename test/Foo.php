@@ -7,9 +7,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  *
  */
-class FooApi implements Validation {
+class Foo implements Validation, MappableApi {
 	use ObjectValidationTrait;
-
+	use MappableApiTrait;
     /**
      * @Assert\EqualTo(
      *     value = "foo"
@@ -17,7 +17,7 @@ class FooApi implements Validation {
      */
 	private $myProp;
 
-	public function __construct($p) {
+	public function __construct($p=null) {
 		$this->myProp = $p;
 	}
 

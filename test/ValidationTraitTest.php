@@ -20,7 +20,7 @@ class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 	public function testValidation() {
 
 		// given
-		$expectedFoo = new FooApi("foo");
+		$expectedFoo = new Foo("foo");
 
 		// when
 		$expectedFoo->validate();
@@ -33,7 +33,7 @@ class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 	public function testValidationError() {
 
 		// given
-		$expectedFoo = new FooApi("invalid");
+		$expectedFoo = new Foo("invalid");
 
 		// when
 		$expectedFoo->validate();
@@ -47,7 +47,7 @@ class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 	public function testCompositeValidation() {
 
 		// given
-		$expectedBar = new Bar("foo", new FooApi("foo"));
+		$expectedBar = new Bar("foo", new Foo("foo"));
 		
 		// when
 		$expectedBar->validate();
@@ -60,7 +60,7 @@ class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 	public function testCompositeValidationError() {
 
 		// given
-		$expectedBar = new Bar("foo", new FooApi("invalid"));
+		$expectedBar = new Bar("foo", new Foo("invalid"));
 		
 		// when
 		$expectedBar->validate();
@@ -75,9 +75,9 @@ class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 	public function testCompositeArrayValidation() {
 
 		// given
-		$expectedBar = new Bar("foo", new FooApi("foo"), array(
-			new FooApi("foo"),
-			new FooApi("foo")
+		$expectedBar = new Bar("foo", new Foo("foo"), array(
+			new Foo("foo"),
+			new Foo("foo")
 		));
 		
 		// when
@@ -91,9 +91,9 @@ class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 	public function testCompositeArrayValidationError() {
 
 		// given
-		$expectedBar = new Bar("foo", new FooApi("foo"), array(
-			new FooApi("foo"),
-			new FooApi("invalid")
+		$expectedBar = new Bar("foo", new Foo("foo"), array(
+			new Foo("foo"),
+			new Foo("invalid")
 		));
 		
 		// when
