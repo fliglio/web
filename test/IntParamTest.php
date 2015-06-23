@@ -20,6 +20,13 @@ class IntParamTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue(true);
 	}
 
+	public function testValid_IntegerStringIsInt() {
+		$param = new IntParam('34');
+		$param->validate();
+		
+
+		$this->assertTrue(is_int($param->get()));
+	}
 	/**
 	 * @expectedException Fliglio\Web\ValidationException
 	 */
