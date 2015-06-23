@@ -13,4 +13,7 @@ class IntParam extends Param {
             'message' => 'The value {{ value }} is not a valid integer.'
         ]));
 	}
+	public function get() {
+		return (int)parent::get();
+	}
 }
