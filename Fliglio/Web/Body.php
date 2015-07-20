@@ -2,7 +2,7 @@
 
 namespace Fliglio\Web;
 
-use Fliglio\Http\Exceptions\BadRequestException;
+use Fliglio\Http\Exceptions\UnprocessableEntityException;
 
 class Body {
 	private $body;
@@ -17,13 +17,11 @@ class Body {
 	public function bind(ApiMapper $mapper) {
 		$arr = null;
 		switch($this->contentType) {
-
-		// assume json
-		case 'application/json':
-		default:
-			$arr = json_decode($this->body, true);
+			// assume json
+			case 'application/json':
+			default:
+				$arr = json_decode($this->body, true);
 		}
-
 
 		$entity = $mapper->unmarshal($arr);
 
@@ -31,7 +29,7 @@ class Body {
 			try {
 				$entity->validate();
 			} catch (ValidationException $e) {
-				throw new BadRequestException($e->getMessage());
+				throw new UnprocessableEntityException($e->getMessage());
 			}
 		}
 		return $entity;

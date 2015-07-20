@@ -3,7 +3,7 @@
 namespace Fliglio\Web;
 
 use Symfony\Component\Validator\Validation as SymphonyValidation;
-use Fliglio\Http\Exceptions\BadRequestException;
+use Fliglio\Http\Exceptions\UnprocessableEntityException;
 
 class Param {
 	private $val;
@@ -16,7 +16,7 @@ class Param {
 		try {
 			$this->validate();
 		} catch (ValidationException $e) {
-			throw new BadRequestException($e->getMessage());
+			throw new UnprocessableEntityException($e->getMessage());
 		}
 
 		return $this->val;
