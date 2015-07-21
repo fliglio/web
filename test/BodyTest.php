@@ -30,7 +30,7 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
+	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
 	 */
 	public function testBindValidationError() {
 
@@ -92,7 +92,7 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
+	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
 	 */
 	public function testEntityValidationError() {
 
