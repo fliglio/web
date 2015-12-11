@@ -20,7 +20,7 @@ trait MappableApiTrait {
 	public static function unmarshalCollection($vos) {
 		$entities = [];
 		foreach ($vos as $vo) {
-			$entities[] = self::marshal($vo);
+			$entities[] = self::unmarshal($vo);
 		}
 		return $entities;
 	}
