@@ -7,6 +7,7 @@ use Fliglio\Http\Exceptions\BadRequestException;
 
 class Entity {
 	private $body;
+	private $contentType;
 
 	public function __construct($body, $contentType) {
 		$this->body = $body;
@@ -14,6 +15,9 @@ class Entity {
 	}
 	public function get() {
 		return $this->body;
+	}
+	public function getContentType() {
+		return $this->contentType;
 	}
 	public function bind($entityType) {
 		if (!in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {

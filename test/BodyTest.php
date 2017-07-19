@@ -105,4 +105,20 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		// when
 		$found = $body->bind('Fliglio\Web\Foo');
 	}
+
+	public function testEntityCopying() {
+
+		// given
+		$expected = new Foo("foo");
+		$fooJson = '{"myProp": "foo"}';
+
+		$oldBody = new Entity($fooJson, 'application/json');
+		$body = new Entity($oldBody->get(), $oldBody->getContentType());
+
+		// when
+		$found = $body->bind('Fliglio\Web\Foo');
+
+		// then
+		$this->assertEquals($expected, $found);
+	}
 }
