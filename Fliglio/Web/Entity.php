@@ -2,7 +2,6 @@
 
 namespace Fliglio\Web;
 
-use Fliglio\Http\Exceptions\UnprocessableEntityException;
 use Fliglio\Http\Exceptions\BadRequestException;
 
 class Entity {
@@ -21,15 +20,16 @@ class Entity {
 	}
 	public function bind($entityType) {
 		if (!in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
-			throw new BadRequestException($entityType . " doesn't implement Fliglio\Web\MappableApi");
+			throw new \Exception($entityType . " doesn't implement Fliglio\Web\MappableApi");
 		}
 
 		$arr = null;
 		switch($this->contentType) {
-			// assume json
-			case 'application/json':
-			default:
-				$arr = json_decode($this->body, true);
+
+		// assume json
+		case 'application/json':
+		default:
+			$arr = json_decode($this->body, true);
 		}
 
 		$entity = $entityType::unmarshal($arr);
@@ -38,7 +38,7 @@ class Entity {
 			try {
 				$entity->validate();
 			} catch (ValidationException $e) {
-				throw new UnprocessableEntityException($e->getMessage());
+				throw new BadRequestException($e->getMessage());
 			}
 		}
 		return $entity;

@@ -30,7 +30,7 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
+	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testBindValidationError() {
 
@@ -92,7 +92,7 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
+	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testEntityValidationError() {
 
@@ -113,9 +113,9 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		$fooJson = '{"myProp": "foo"}';
 
 		$oldBody = new Entity($fooJson, 'application/json');
-		$body = new Entity($oldBody->get(), $oldBody->getContentType());
 
 		// when
+		$body = new Entity($oldBody->get(), $oldBody->getContentType());
 		$found = $body->bind('Fliglio\Web\Foo');
 
 		// then

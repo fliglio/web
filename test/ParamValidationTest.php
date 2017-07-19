@@ -34,7 +34,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
+	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testBadRequestThrownWhenGettingInvalidParam() {
 
@@ -73,7 +73,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
+	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testBadRequestThrownWhenGettingInvalidIntParam() {
 
@@ -111,7 +111,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
+	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testBadRequestThrownWhenGettingInvalidIntGetParam() {
 
@@ -149,7 +149,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Fliglio\Http\Exceptions\UnprocessableEntityException
+	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testBadRequestThrownWhenGettingInvalidIntPathParam() {
 
