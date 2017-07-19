@@ -113,9 +113,9 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		$fooJson = '{"myProp": "foo"}';
 
 		$oldBody = new Entity($fooJson, 'application/json');
-		$body = new Entity($oldBody->get(), $oldBody->getContentType());
 
 		// when
+		$body = new Entity($oldBody->get(), $oldBody->getContentType());
 		$found = $body->bind('Fliglio\Web\Foo');
 
 		// then
