@@ -29,6 +29,22 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($expected, $found);
 	}
 
+	public function testBodyMappingOfPOSTFormData() {
+
+		// given
+		$expected = new Foo("foo");
+		$query = 'myProp=foo&foo=bar';
+
+		$body = new Body($query, 'application/x-www-form-urlencoded');
+		$mapper = new FooApiMapper();
+
+		// when
+		$found = $body->bind($mapper);
+
+		// then
+		$this->assertEquals($expected, $found);
+	}
+
 	/**
 	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
