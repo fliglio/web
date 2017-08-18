@@ -25,6 +25,7 @@ class Entity {
 
 		$arr = null;
 		switch($this->contentType) {
+			// consider adding multipart/form-data (for giant content or file uploads) in the future, with special handling
 			case 'application/x-www-form-urlencoded':
 				parse_str($this->body, $arr);
 				break;
