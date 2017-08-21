@@ -25,11 +25,14 @@ class Entity {
 
 		$arr = null;
 		switch($this->contentType) {
-
-		// assume json
-		case 'application/json':
-		default:
-			$arr = json_decode($this->body, true);
+			// consider adding multipart/form-data (for giant content or file uploads) in the future, with special handling
+			case 'application/x-www-form-urlencoded':
+				parse_str($this->body, $arr);
+				break;
+			// assume json
+			case 'application/json':
+			default:
+				$arr = json_decode($this->body, true);
 		}
 
 		$entity = $entityType::unmarshal($arr);
