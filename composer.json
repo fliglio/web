@@ -11,7 +11,7 @@
     "require": {
         "php"                  : ">=5.3",
         "lib-curl"             : "*",
-        "fliglio/http"         : "dev-master",
+        "fliglio/http"         : "2.1.*",
         "symfony/validator"    : "2.6.13",
         "doctrine/annotations" : "1.*",
         "doctrine/cache"       : "1.*"
