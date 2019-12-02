@@ -12,7 +12,7 @@
         "php"                  : ">=5.3",
         "lib-curl"             : "*",
         "fliglio/http"         : "dev-master",
-        "symfony/validator"    : "2.6",
+        "symfony/validator"    : "2.6.*|3.4.*",
         "doctrine/annotations" : "1.*",
         "doctrine/cache"       : "1.*"
     },
