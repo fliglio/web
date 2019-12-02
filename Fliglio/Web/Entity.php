@@ -19,7 +19,7 @@ class Entity {
 		return $this->contentType;
 	}
 	public function bind($entityType) {
-		if (!in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
+		if (!class_exists($entityType) || !in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
 			throw new \Exception($entityType . " doesn't implement Fliglio\Web\MappableApi");
 		}
 
