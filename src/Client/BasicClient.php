@@ -55,9 +55,6 @@ class BasicClient implements HttpClient {
 		curl_setopt($ch, CURLOPT_URL, $request->getUrl()); 
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $request->getHeaders());
 
-		$h = $request->getHeaders();
-
-
 		if ($request->getMethod() == Http::METHOD_POST) {
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);

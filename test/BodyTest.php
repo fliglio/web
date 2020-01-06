@@ -5,13 +5,6 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
 class BodyTest extends \PHPUnit_Framework_TestCase {
 
-	public function setUp() {
-		AnnotationRegistry::registerAutoloadNamespace(
-			'Symfony\\Component\\Validator\\Constraints\\',
-			dirname(__DIR__) . "/vendor/symfony/validator"
-		);
-	}
-
 	public function testBindMapping() {
 
 		// given
@@ -50,14 +43,13 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testBindValidationError() {
 
 		// given
-		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Body($fooJson, 'application/json');
 		$mapper = new FooApiMapper();
 
 		// when
-		$found = $body->bind($mapper);
+		$body->bind($mapper);
 	}
 
 
@@ -97,13 +89,12 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testEntityBadApiClass() {
 
 		// given
-		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
 		// when
-		$found = $body->bind('Fliglio\Web\Foodfsdfsdf'); // not a real class
+		$body->bind('Fliglio\Web\Foodfsdfsdf'); // not a real class
 	}
 
 	/**
@@ -112,13 +103,12 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testEntityBadApiInterface() {
 
 		// given
-		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
 		// when
-		$found = $body->bind('Fliglio\Web\FooMapper'); // valid class, wrong interface
+		$body->bind('Fliglio\Web\FooMapper'); // valid class, wrong interface
 	}
 
 	/**
@@ -127,13 +117,12 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	public function testEntityValidationError() {
 
 		// given
-		$expected = new Foo("bar");
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
 		// when
-		$found = $body->bind('Fliglio\Web\Foo');
+		$body->bind('Fliglio\Web\Foo');
 	}
 
 	public function testEntityCopying() {

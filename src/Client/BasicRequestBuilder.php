@@ -2,8 +2,6 @@
 
 namespace Fliglio\Web\Client;
 
-use Fliglio\Http\RequestWriter;
-
 class BasicRequestBuilder {
 
 	private $method = null;

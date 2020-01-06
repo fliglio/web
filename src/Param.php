@@ -28,9 +28,9 @@ class Param {
 	}
 
 	public function validate() {
-		$validator = SymphonyValidation::createValidator();
+		$validator = SymphonyValidation::createValidatorBuilder()->getValidator();
 
-		$violations = $validator->validateValue($this->val, $this->constraints);
+		$violations = $validator->validate($this->val, $this->constraints);
 
 		if ($violations->count() > 0) {
 			throw new ValidationException($violations);
