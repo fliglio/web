@@ -5,9 +5,6 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
 
 	private $url;
 
-	public function setup() {
-	}
-
 	public function testKitchenSink() {
 		// given
 		$this->url = Url::fromString('http://foo:bar@www.google.com:80/test/route?key=value&key2=value#foo');

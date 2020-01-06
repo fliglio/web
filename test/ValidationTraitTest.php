@@ -1,16 +1,7 @@
 <?php
 namespace Fliglio\Web;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-
 class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
-
-	public function setUp() {
-		AnnotationRegistry::registerAutoloadNamespace(
-			'Symfony\\Component\\Validator\\Constraints\\', 
-			dirname(__DIR__) . "/vendor/symfony/validator"
-		);
-	}
 
 	/**
 	 * Test that a simple model can be validated
