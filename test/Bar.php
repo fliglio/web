@@ -2,6 +2,8 @@
 
 namespace Fliglio\Web;
 
+use Fliglio\Web\Validation;
+use Fliglio\Web\MappableApi;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

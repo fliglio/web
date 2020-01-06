@@ -1,7 +1,6 @@
 <?php
 namespace Fliglio\Web;
 
-use Fliglio\Http\Http;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class ParamValidationTest extends \PHPUnit_Framework_TestCase {

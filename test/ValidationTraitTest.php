@@ -1,9 +1,7 @@
 <?php
 namespace Fliglio\Web;
 
-use Fliglio\Http\Http;
 use Doctrine\Common\Annotations\AnnotationRegistry;
-
 
 class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 

@@ -1,7 +1,6 @@
 <?php
 namespace Fliglio\Web;
 
-use Fliglio\Http\Http;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
 class IntParamTest extends \PHPUnit_Framework_TestCase {

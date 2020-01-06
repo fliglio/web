@@ -14,7 +14,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 			->build();
 
 		$resp = $client->makeRequest($req);
-
 		$this->assertEquals($resp->getStatus(), 200);
 	}
 

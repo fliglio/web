@@ -1,9 +1,6 @@
 <?php
 namespace Fliglio\Web;
 
-use Fliglio\Http\Http;
-use Doctrine\Common\Annotations\AnnotationRegistry;
-
 class ApiMapperTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testApiMapper() {
