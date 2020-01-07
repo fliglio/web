@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web\Client;
 
 use Fliglio\Http\Http;

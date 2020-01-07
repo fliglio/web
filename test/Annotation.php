@@ -5,9 +5,6 @@ namespace Fliglio\Web;
 use Fliglio\Web\Validation;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- *
- */
 class Annotation implements Validation {
 	use ObjectValidationTrait;
 	
@@ -40,7 +37,6 @@ class Annotation implements Validation {
 	 */
 	private $integerMinMax;
 
-
 	public function __construct($id, $string, $number, $stringLength, $integerMinMax) {
 		$this->id = $id;
 		$this->string = $string;
@@ -52,15 +48,19 @@ class Annotation implements Validation {
 	public function getId() {
 		return $this->id;
 	}
+
 	public function getString() {
 		return $this->string;
 	}
+
 	public function getNumber() {
 		return $this->number;
 	}
+
 	public function getStringLength() {
 		return $this->stringLength;
 	}
+
 	public function getIntegerMinMax() {
 		return $this->integerMinMax;
 	}

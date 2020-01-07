@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web;
 
 class ValidationTraitTest extends \PHPUnit_Framework_TestCase {

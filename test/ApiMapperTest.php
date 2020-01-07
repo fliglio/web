@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web;
 
 class ApiMapperTest extends \PHPUnit_Framework_TestCase {
@@ -64,4 +65,5 @@ class ApiMapperTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($entities, $foundEntities);
 		$this->assertEquals($vo, $foundVo);
 	}
+
 }

@@ -6,34 +6,30 @@ use Fliglio\Web\Validation;
 use Fliglio\Web\MappableApi;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- *
- */
 class Bar implements Validation, MappableApi {
 	use ObjectValidationTrait;
 	use MappableApiTrait;
 
-    /**
-     * @Assert\EqualTo(
-     *     value = "foo"
-     * )
-     */
+	/**
+	 * @Assert\EqualTo(
+	 *     value = "foo"
+	 * )
+	 */
 	private $name;
 
-    /**
-     * @Assert\Valid
-     */
+	/**
+	 * @Assert\Valid
+	 */
 	private $foo; // Foo
 
-    /**
-     * @Assert\Valid
-     */
+	/**
+	 * @Assert\Valid
+	 */
 	private $foos; // []Foo
 
-
-	public function __construct($n, $f, array $fs = array()) {
+	public function __construct($n, $f, array $fs = []) {
 		$this->name = $n;
-		$this->foo = $f;
+		$this->foo  = $f;
 		$this->foos = $fs;
 	}
 	
@@ -44,9 +40,11 @@ class Bar implements Validation, MappableApi {
 	public function getName() {
 		return $this->name;
 	}
+
 	public function getFoo() {
 		return $this->foo;
 	}
+
 	public function getFoos() {
 		return $this->foos;
 	}

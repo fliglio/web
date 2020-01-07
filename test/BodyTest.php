@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web;
 
 class BodyTest extends \PHPUnit_Framework_TestCase {
@@ -141,4 +142,5 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		// then
 		$this->assertEquals($expected, $found);
 	}
+	
 }

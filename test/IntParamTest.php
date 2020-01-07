@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web;
 
 class IntParamTest extends \PHPUnit_Framework_TestCase {
@@ -17,6 +18,7 @@ class IntParamTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertTrue(is_int($param->get()));
 	}
+
 	/**
 	 * @expectedException Fliglio\Web\ValidationException
 	 */

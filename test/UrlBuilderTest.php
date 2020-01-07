@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web;
 
 class UrlBuilderTest extends \PHPUnit_Framework_TestCase {

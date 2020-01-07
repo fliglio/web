@@ -12,12 +12,15 @@ class Entity {
 		$this->body = $body;
 		$this->contentType = $contentType;
 	}
+
 	public function get() {
 		return $this->body;
 	}
+
 	public function getContentType() {
 		return $this->contentType;
 	}
+
 	public function bind($entityType) {
 		if (!class_exists($entityType) || !in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
 			throw new \Exception($entityType . " doesn't implement Fliglio\Web\MappableApi");
@@ -46,4 +49,5 @@ class Entity {
 		}
 		return $entity;
 	}
+
 }

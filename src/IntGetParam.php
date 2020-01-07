@@ -2,5 +2,4 @@
 
 namespace Fliglio\Web;
 
-class IntGetParam extends IntParam {
-}
+class IntGetParam extends IntParam {}

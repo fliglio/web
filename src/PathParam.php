@@ -2,5 +2,4 @@
 
 namespace Fliglio\Web;
 
-class PathParam extends Param {
-}
+class PathParam extends Param {}

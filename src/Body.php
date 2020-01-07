@@ -8,12 +8,13 @@ class Body {
 	private $body;
 
 	public function __construct($body, $contentType) {
-		$this->body = $body;
+		$this->body        = $body;
 		$this->contentType = $contentType;
 	}
 	public function get() {
 		return $this->body;
 	}
+
 	public function bind(ApiMapper $mapper) {
 		$arr = null;
 		switch($this->contentType) {
@@ -39,4 +40,5 @@ class Body {
 		}
 		return $entity;
 	}
+
 }

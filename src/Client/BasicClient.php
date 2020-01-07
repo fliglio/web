@@ -9,34 +9,37 @@ use Fliglio\Http\HttpClient;
 
 class BasicClient implements HttpClient {
 
-	public function get($url, array $headers = array()) {
+	public function get($url, array $headers = []) {
 		$b = $this->getBuilderCommon($url, $headers);
 		$b->method(Http::METHOD_GET);
 
 		return $this->makeRequest($b->build());
 	}
-	public function put($url, $body = null, array $headers = array()) {
+
+	public function put($url, $body = null, array $headers = []) {
 		$b = $this->getBuilderCommon($url, $headers);
 		$b->method(Http::METHOD_PUT);
 		$b->body($body);
 
 		return $this->makeRequest($b->build());
 	}
-	public function post($url, $body = null, array $headers = array()) {
+
+	public function post($url, $body = null, array $headers = []) {
 		$b = $this->getBuilderCommon($url, $headers);
 		$b->method(Http::METHOD_POST);
 		$b->body($body);
 
 		return $this->makeRequest($b->build());
 	}
-	public function delete($url, array $headers = array()) {
+
+	public function delete($url, array $headers = []) {
 		$b = $this->getBuilderCommon($url, $headers);
 		$b->method(Http::METHOD_DELETE);
 
 		return $this->makeRequest($b->build());
 	}
 
-	private function getBuilderCommon($url, array $headers = array()) {
+	private function getBuilderCommon($url, array $headers = []) {
 		$b = new BasicRequestBuilder();
 		$b->url($url);
 		foreach ($headers as $h) {
@@ -44,6 +47,7 @@ class BasicClient implements HttpClient {
 		}
 		return $b;
 	}
+
 	/**
 	 * @param RequestWriter $request
 	 * @return ResponseReader
@@ -76,7 +80,7 @@ class BasicClient implements HttpClient {
 
 
 		$result = curl_exec($ch);
-		$headers = array();
+		$headers = [];
 		$body = null;
 
 		if ($result !== false) {

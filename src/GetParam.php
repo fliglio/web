@@ -2,5 +2,4 @@
 
 namespace Fliglio\Web;
 
-class GetParam extends Param {
-}
+class GetParam extends Param {}

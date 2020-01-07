@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web;
 
 use Symfony\Component\Validator\Constraints as Assert;

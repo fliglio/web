@@ -6,8 +6,9 @@ use Symfony\Component\Validator\Validation as SymphonyValidation;
 use Fliglio\Http\Exceptions\BadRequestException;
 
 class Param {
+	
 	private $val;
-	private $constraints = array();
+	private $constraints = [];
 
 	public function __construct($val) {
 		$this->val = $val;

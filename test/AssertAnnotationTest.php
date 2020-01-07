@@ -1,4 +1,5 @@
 <?php
+
 namespace Fliglio\Web;
 
 class AssertAnnotationTest extends \PHPUnit_Framework_TestCase {
@@ -21,11 +22,11 @@ class AssertAnnotationTest extends \PHPUnit_Framework_TestCase {
 		// when
 		$expectedAnnotation->validate();
 
+		// then
+		$this->assertTrue(true);
 	}
 
-	/**
-	 * @expectedException Fliglio\Web\ValidationException
-	 */
+	/** @expectedException Fliglio\Web\ValidationException */
 	public function testValidationError() {
 
 		// given
@@ -39,6 +40,8 @@ class AssertAnnotationTest extends \PHPUnit_Framework_TestCase {
 		// when
 		$expectedAnnotation->validate();
 
+		// then
+		$this->assertTrue(false);
 	}
 
 }
