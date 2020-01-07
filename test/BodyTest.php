@@ -1,12 +1,21 @@
 <?php
 namespace Fliglio\Web;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-
 class BodyTest extends \PHPUnit_Framework_TestCase {
 
-	public function testBindMapping() {
+	public function testGet() {
+		// given
+		$fooJson = '{"myProp": "foo"}';
+		$body = new Body($fooJson, 'application/json');
+		
+		// when
+		$getBody = $body->get();
 
+		// then
+		$this->assertEquals($fooJson, $getBody);
+	}
+
+	public function testBindMapping() {
 		// given
 		$expected = new Foo("foo");
 		$fooJson = '{"myProp": "foo"}';
@@ -22,7 +31,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testBodyMappingOfPOSTFormData() {
-
 		// given
 		$expected = new Foo("foo");
 		$query = 'myProp=foo&foo=bar';
@@ -41,7 +49,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testBindValidationError() {
-
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
@@ -54,7 +61,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 
 
 	public function testEntityMapping() {
-
 		// given
 		$expected = new Foo("foo");
 		$fooJson = '{"myProp": "foo"}';
@@ -69,7 +75,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testEntityMappingOfPOSTFormData() {
-
 		// given
 		$expected = new Foo("foo");
 		$query = 'myProp=foo&foo=bar';
@@ -87,7 +92,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	 * @expectedException \Exception
 	 */
 	public function testEntityBadApiClass() {
-
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
@@ -101,7 +105,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	 * @expectedException \Exception
 	 */
 	public function testEntityBadApiInterface() {
-
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
@@ -115,7 +118,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
 	 */
 	public function testEntityValidationError() {
-
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
@@ -126,7 +128,6 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testEntityCopying() {
-
 		// given
 		$expected = new Foo("foo");
 		$fooJson = '{"myProp": "foo"}';

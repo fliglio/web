@@ -31,7 +31,7 @@ class BasicClient implements HttpClient {
 	}
 	public function delete($url, array $headers = array()) {
 		$b = $this->getBuilderCommon($url, $headers);
-		$b->method(Http::METHOD_POST);
+		$b->method(Http::METHOD_DELETE);
 
 		return $this->makeRequest($b->build());
 	}
