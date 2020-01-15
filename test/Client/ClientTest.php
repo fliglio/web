@@ -49,7 +49,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('HTTP/1.1 200 OK', $headers[0]);
 	}
 
-	public function testGetWithHeaders() {
+	public function testGet_withHeaders() {
 		$headers = ['Authorization: gfhjui'];
 		$client = new BasicClient();
 		$resp = $client->get('http://www.google.com', $headers);
