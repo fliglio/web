@@ -1,50 +1,57 @@
 <?php
-namespace Fliglio\Web;
 
+namespace Fliglio\Web;
 
 class Url {
 
-	private $scheme = null;
-	private $host = null;
-	private $port = null;
-	private $user = null;
-	private $pass = null;
-	private $path = null;
-	private $query = null;
+	private $scheme   = null;
+	private $host     = null;
+	private $port     = null;
+	private $user     = null;
+	private $pass     = null;
+	private $path     = null;
+	private $query    = null;
 	private $fragment = null;
 
 	public function __construct($scheme = null, $host = null, $port = null, $user = null, $pass = null, $path = null, $query = null, $fragment = null) {
-		$this->scheme = $scheme;
-		$this->host = $host;
-		$this->port = $port;
-		$this->user = $user;
-		$this->pass = $pass;
-		$this->path = $path;
-		$this->query = $query;
+		$this->scheme   = $scheme;
+		$this->host     = $host;
+		$this->port     = $port;
+		$this->user     = $user;
+		$this->pass     = $pass;
+		$this->path     = $path;
+		$this->query    = $query;
 		$this->fragment = $fragment;
 	}
 
 	public function getScheme() {
 		return $this->scheme;
 	}
+
 	public function getHost() {
 		return $this->host;
 	}
+
 	public function getPort() {
 		return $this->port;
 	}
+
 	public function getUser() {
 		return $this->user;
 	}
+
 	public function getPass() {
 		return $this->pass;
 	}
+
 	public function getPath() {
 		return $this->path;
 	}
+
 	public function getQuery() {
 		return $this->query;
 	}
+	
 	public function getFragment() {
 		return $this->fragment;
 	}
@@ -66,7 +73,6 @@ class Url {
 		return $inst;
 	}
 
-
 	public function toParts() {
 		return array(
 			'scheme' => $this->scheme,
@@ -79,6 +85,7 @@ class Url {
 			'fragment' => $this->fragment
 		);
 	}
+
 	public function __tostring() {
 		$parse_url = $this->toParts();
 			return 
@@ -91,4 +98,5 @@ class Url {
 				.((isset($parse_url['fragment'])) ? '#' . $parse_url['fragment'] : '')
 			;
 	}
+
 }

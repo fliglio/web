@@ -18,6 +18,7 @@ class CollectionApiMapper implements ApiMapper {
 		}
 		return $vos;
 	}
+
 	public function unmarshal($serialized) {
 		$entities = [];
 
@@ -26,4 +27,5 @@ class CollectionApiMapper implements ApiMapper {
 		}
 		return $entities;
 	}
+
 }

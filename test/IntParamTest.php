@@ -1,17 +1,8 @@
 <?php
+
 namespace Fliglio\Web;
 
-use Fliglio\Http\Http;
-use Doctrine\Common\Annotations\AnnotationRegistry;
-
 class IntParamTest extends \PHPUnit_Framework_TestCase {
-
-	public function setUp() {
-		AnnotationRegistry::registerAutoloadNamespace(
-			'Symfony\\Component\\Validator\\Constraints\\', 
-			dirname(__DIR__) . "/vendor/symfony/validator"
-		);
-	}
 
 	public function testValid_IntegerString() {
 		$param = new IntParam('34');
@@ -27,6 +18,7 @@ class IntParamTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertTrue(is_int($param->get()));
 	}
+
 	/**
 	 * @expectedException Fliglio\Web\ValidationException
 	 */

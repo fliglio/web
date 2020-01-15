@@ -1,7 +1,7 @@
 <?php
+
 namespace Fliglio\Web;
 
-use Fliglio\Http\Http;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class ParamValidationTest extends \PHPUnit_Framework_TestCase {
@@ -43,7 +43,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 		$param->addConstraint(new Assert\Length(array('min' => 10)));
 
 		// when
-		$foo = $param->get();
+		$param->get();
 	}
 
 	//=========================================================================
@@ -81,7 +81,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 		$param = new IntParam("foo");
 
 		// when
-		$foo = $param->get();
+		$param->get();
 	}
 
 	//=========================================================================
@@ -119,7 +119,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 		$param = new IntGetParam("foo");
 
 		// when
-		$foo = $param->get();
+		$param->get();
 	}
 
 	//=========================================================================
@@ -157,7 +157,7 @@ class ParamValidationTest extends \PHPUnit_Framework_TestCase {
 		$param = new IntPathParam("foo");
 
 		// when
-		$foo = $param->get();
+		$param->get();
 	}
 
 }

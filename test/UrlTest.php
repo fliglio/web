@@ -1,12 +1,10 @@
 <?php
+
 namespace Fliglio\Web;
 
 class UrlTest extends \PHPUnit_Framework_TestCase {
 
 	private $url;
-
-	public function setup() {
-	}
 
 	public function testKitchenSink() {
 		// given
@@ -24,7 +22,6 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->url->getFragment(), 'foo');
 	}
 
-
 	public function testStringGeneration() {
 		$data = array(
 			'http://foo:bar@www.google.com:80/test/route?key=value&key2=value#foo',
@@ -40,6 +37,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
 			$this->assertEquals($urlStr, (string)Url::fromString($urlStr));
 		}
 	}
+
 	public function testRelativeUrl() {
 		$urlStr = '/foo/bar';
 		$url = Url::fromString($urlStr);
@@ -54,6 +52,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('foo', $url->getHost());
 		$this->assertEquals('8080', $url->getPort());
 	}
+
 	public function testHostAndPortFactory() {
 		// given
 		$expectedStr = 'foo:8080';

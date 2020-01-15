@@ -21,4 +21,5 @@ class BarApiMapper implements ApiMapper {
 			(new CollectionApiMapper($fooMapper))->unmarshal($fooArr['foos'])
 		);
 	}
+
 }

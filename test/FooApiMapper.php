@@ -13,4 +13,5 @@ class FooApiMapper implements ApiMapper {
 	public function unmarshal($fooArr) {
 		return new Foo($fooArr['myProp']);
 	}
+
 }

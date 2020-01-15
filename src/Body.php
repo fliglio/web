@@ -4,25 +4,18 @@ namespace Fliglio\Web;
 
 use Fliglio\Http\Exceptions\BadRequestException;
 
-class Entity {
+class Body {
 	private $body;
-	private $contentType;
 
 	public function __construct($body, $contentType) {
-		$this->body = $body;
+		$this->body        = $body;
 		$this->contentType = $contentType;
 	}
 	public function get() {
 		return $this->body;
 	}
-	public function getContentType() {
-		return $this->contentType;
-	}
-	public function bind($entityType) {
-		if (!in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
-			throw new \Exception($entityType . " doesn't implement Fliglio\Web\MappableApi");
-		}
 
+	public function bind(ApiMapper $mapper) {
 		$arr = null;
 		switch($this->contentType) {
 			// consider adding multipart/form-data (for giant content or file uploads) in the future, with special handling
@@ -35,7 +28,8 @@ class Entity {
 				$arr = json_decode($this->body, true);
 		}
 
-		$entity = $entityType::unmarshal($arr);
+
+		$entity = $mapper->unmarshal($arr);
 
 		if ($entity instanceof Validation) {
 			try {
@@ -46,4 +40,5 @@ class Entity {
 		}
 		return $entity;
 	}
+
 }

@@ -10,18 +10,22 @@ class BasicResponse implements ResponseReader {
 	private $body;
 	private $headers;
 
-	public function __construct($status = 0, $body = null, $headers = array()) {
+	public function __construct($status = 0, $body = null, $headers = []) {
 		$this->status = $status;
 		$this->body = $body;
 		$this->headers = $headers;
 	}
+	
 	public function getStatus() {
 		return $this->status;
 	}
+	
 	public function getBody() {
 		return $this->body;
 	}
+	
 	public function getHeaders() {
 		return $this->headers;
 	}
+
 }

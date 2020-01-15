@@ -4,14 +4,13 @@ namespace Fliglio\Web;
 
 use Symfony\Component\Validator\Validation as SymphonyValidation;
 
-
 trait ObjectValidationTrait {
 	
 	public function validate() {
 
 		$validator = SymphonyValidation::createValidatorBuilder()
-		    ->enableAnnotationMapping()
-		    ->getValidator();
+			->enableAnnotationMapping()
+			->getValidator();
 
 		$violations = $validator->validate($this);
 

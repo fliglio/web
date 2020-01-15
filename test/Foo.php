@@ -4,17 +4,15 @@ namespace Fliglio\Web;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- *
- */
 class Foo implements Validation, MappableApi {
 	use ObjectValidationTrait;
 	use MappableApiTrait;
-    /**
-     * @Assert\EqualTo(
-     *     value = "foo"
-     * )
-     */
+	
+	/**
+	 * @Assert\EqualTo(
+	 *     value = "foo"
+	 * )
+	 */
 	private $myProp;
 
 	public function __construct($p=null) {
@@ -24,4 +22,5 @@ class Foo implements Validation, MappableApi {
 	public function getMyProp() {
 		return $this->myProp;
 	}
+
 }
