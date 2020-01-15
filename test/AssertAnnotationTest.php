@@ -26,15 +26,12 @@ class AssertAnnotationTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue(true);
 	}
 
-	/** @expectedException Fliglio\Web\ValidationException */
-	public function testValidationError() {
-
+	/** 
+	 * @dataProvider invalidDataProvider
+	 * @expectedException Fliglio\Web\ValidationException 
+	 */
+	public function testValidationError($id, $string, $number, $stringLength, $integerMinMax) {
 		// given
-		$id = "string";
-		$string = 1;
-		$number = "string";
-		$stringLength = substr(str_shuffle(self::CHARS), 0, 20);
-		$integerMinMax = 0;
 		$expectedAnnotation = new Annotation($id, $string, $number, $stringLength, $integerMinMax);
 
 		// when
@@ -42,6 +39,16 @@ class AssertAnnotationTest extends \PHPUnit_Framework_TestCase {
 
 		// then
 		$this->assertTrue(false);
+	}
+
+	public function invalidDataProvider() {
+		return [
+			["string","string",1,substr(str_shuffle(self::CHARS), 0, 10), 1], // bad id
+			[1,1,1,substr(str_shuffle(self::CHARS), 0, 10), 1], // bad string
+			[1,"string","string",substr(str_shuffle(self::CHARS), 0, 10), 1], // bad number
+			[1,"string",1,substr(str_shuffle(self::CHARS), 0, 25), 1], // bad string length
+			[1,"string",1,substr(str_shuffle(self::CHARS), 0, 10), 1000] // bad integer max
+		];
 	}
 
 }
