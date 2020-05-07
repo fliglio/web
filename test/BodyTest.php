@@ -2,6 +2,8 @@
 
 namespace Fliglio\Web;
 
+use Fliglio\Http\Exceptions\BadRequestException;
+
 class BodyTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGet() {
@@ -46,15 +48,15 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($expected, $found);
 	}
 
-	/**
-	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
-	 */
 	public function testBindValidationError() {
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Body($fooJson, 'application/json');
 		$mapper = new FooApiMapper();
+
+		// then
+		$this->expectException(BadRequestException::class);
 
 		// when
 		$body->bind($mapper);
@@ -89,43 +91,62 @@ class BodyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($expected, $found);
 	}
 
-	/**
-	 * @expectedException \Exception
-	 */
 	public function testEntityBadApiClass() {
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
+		// then
+		$this->expectException(\Exception::class);
+
 		// when
 		$body->bind('Fliglio\Web\Foodfsdfsdf'); // not a real class
 	}
 
-	/**
-	 * @expectedException \Exception
-	 */
 	public function testEntityBadApiInterface() {
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
+		// then
+		$this->expectException(\Exception::class);
+
 		// when
 		$body->bind('Fliglio\Web\FooMapper'); // valid class, wrong interface
 	}
 
-	/**
-	 * @expectedException Fliglio\Http\Exceptions\BadRequestException
-	 */
 	public function testEntityValidationError() {
 		// given
 		$fooJson = '{"myProp": "bar"}';
 
 		$body = new Entity($fooJson, 'application/json');
 
+		// then
+		$this->expectException(BadRequestException::class);
+
 		// when
 		$body->bind('Fliglio\Web\Foo');
+	}
+
+	public function testEntityValidationErrorConstraintAccess() {
+		// given
+		$validationErrorMessageName = 'This value should be equal to "foo".';
+
+		$fooJson = '{"myProp": "bar"}';
+
+		$body = new Entity($fooJson, 'application/json');
+
+		// when
+		try {
+			$body->bind('Fliglio\Web\Foo');
+			$this->fail("expected exception, shouldn't be here");
+		} catch (ValidationException $e) {
+			$this->assertContains($validationErrorMessageName, $e->getMessage());
+			$this->assertEquals($validationErrorMessageName, $e->getConstraintViolationList()->get(0)->getMessage());
+
+		}
 	}
 
 	public function testEntityCopying() {

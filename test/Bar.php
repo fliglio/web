@@ -18,6 +18,13 @@ class Bar implements Validation, MappableApi {
 	private $name;
 
 	/**
+	 * @Assert\EqualTo(
+	 *     value = "bar"
+	 * )
+	 */
+	private $otherName;
+
+	/**
 	 * @Assert\Valid
 	 */
 	private $foo; // Foo
@@ -48,4 +55,22 @@ class Bar implements Validation, MappableApi {
 	public function getFoos() {
 		return $this->foos;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOtherName() {
+		return $this->otherName;
+	}
+
+	/**
+	 * @param mixed $otherName
+	 * @return Bar
+	 */
+	public function setOtherName($otherName) {
+		$this->otherName = $otherName;
+		return $this;
+	}
+
+
 }

@@ -41,11 +41,8 @@ class Entity {
 		$entity = $entityType::unmarshal($arr);
 
 		if ($entity instanceof Validation) {
-			try {
-				$entity->validate();
-			} catch (ValidationException $e) {
-				throw new BadRequestException($e->getMessage());
-			}
+			// throws ValidationException on constraint violation
+			$entity->validate();
 		}
 		return $entity;
 	}
