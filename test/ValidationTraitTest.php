@@ -90,4 +90,24 @@ class ValidationTraitTest extends \PHPUnit_Framework_TestCase {
 		$expectedBar->validate();
 	}
 
+	public function testValidationExceptionContent() {
+
+		// given
+		$validationErrorMessageName = 'This value should be equal to "foo".';
+		$validationErrorMessageOtherName = 'This value should be equal to "bar".';
+
+		$expectedBar = (new Bar("invalid", null))->setOtherName("invalid");
+
+		// when
+		try {
+			$expectedBar->validate();
+			$this->fail("expected exception, shouldn't be here");
+		} catch (ValidationException $e) {
+			$this->assertContains($validationErrorMessageName, $e->getMessage());
+			$this->assertContains($validationErrorMessageOtherName, $e->getMessage());
+			$this->assertEquals($validationErrorMessageName, $e->getConstraintViolationList()->get(0)->getMessage());
+			$this->assertEquals($validationErrorMessageOtherName, $e->getConstraintViolationList()->get(1)->getMessage());
+		}
+	}
+
 }
