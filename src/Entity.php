@@ -2,8 +2,6 @@
 
 namespace Fliglio\Web;
 
-use Fliglio\Http\Exceptions\BadRequestException;
-
 class Entity {
 	private $body;
 	private $contentType;
@@ -41,11 +39,8 @@ class Entity {
 		$entity = $entityType::unmarshal($arr);
 
 		if ($entity instanceof Validation) {
-			try {
-				$entity->validate();
-			} catch (ValidationException $e) {
-				throw new BadRequestException($e->getMessage());
-			}
+			// throws ValidationException on constraint violation
+			$entity->validate();
 		}
 		return $entity;
 	}
