@@ -2,8 +2,6 @@
 
 namespace Fliglio\Web;
 
-use Fliglio\Http\Exceptions\BadRequestException;
-
 class Entity {
 	private $body;
 	private $contentType;
