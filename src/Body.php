@@ -32,11 +32,7 @@ class Body {
 		$entity = $mapper->unmarshal($arr);
 
 		if ($entity instanceof Validation) {
-			try {
-				$entity->validate();
-			} catch (ValidationException $e) {
-				throw new BadRequestException($e->getMessage());
-			}
+			$entity->validate();
 		}
 		return $entity;
 	}
