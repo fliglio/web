@@ -20,9 +20,36 @@ class Entity {
 	}
 
 	public function bind($entityType) {
-		if (!class_exists($entityType) || !in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
-			throw new \Exception($entityType . " doesn't implement Fliglio\Web\MappableApi");
+		$this->checkType($entityType);
+
+		$arr = $this->parseBody();
+
+		$entity = $entityType::unmarshal($arr);
+
+		if ($entity instanceof Validation) {
+			// throws ValidationException on constraint violation
+			$entity->validate();
 		}
+		return $entity;
+	}
+
+	public function bindCollection($entityType) {
+		$this->checkType($entityType);
+
+		$arr = $this->parseBody();
+
+		$mapper = new CollectionApiMapper($entityType::getApiMapper());
+		$coll = $mapper->unmarshal($arr);
+		foreach ($coll as $entity) {
+			if ($entity instanceof Validation) {
+				// throws ValidationException on constraint violation
+				$entity->validate();
+			}
+		}
+		return $coll;
+	}
+
+	private function parseBody() {
 
 		$arr = null;
 		switch($this->contentType) {
@@ -36,13 +63,13 @@ class Entity {
 				$arr = json_decode($this->body, true);
 		}
 
-		$entity = $entityType::unmarshal($arr);
+		return $arr;
+	}
 
-		if ($entity instanceof Validation) {
-			// throws ValidationException on constraint violation
-			$entity->validate();
+	private function checkType($entityType) {
+		if (!class_exists($entityType) || !in_array('Fliglio\Web\MappableApi', class_implements($entityType))) {
+			throw new \Exception($entityType . " doesn't implement Fliglio\Web\MappableApi");
 		}
-		return $entity;
 	}
 
 }
