@@ -46,7 +46,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(HTTP::STATUS_OK, $resp->getStatus());
 		$this->assertEquals('https://postman-echo.com/get', $body['url']);
-		$this->assertEquals('HTTP/1.1 200 OK', $headers[0]);
+		$this->assertTrue(strpos($headers[0], '200') !== false);
 	}
 
 	public function testGet_withHeaders() {
@@ -79,4 +79,3 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 	}
 
 }
-
