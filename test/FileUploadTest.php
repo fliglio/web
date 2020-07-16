@@ -23,5 +23,15 @@ class FileUploadTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(UPLOAD_ERR_OK, $file->getError());
 	}
 
+	public function testempty_FileUpload() {
+		$file = new FileUpload([]);
+
+
+		$this->assertEquals("", $file->getName());
+		$this->assertEquals("", $file->getType());
+		$this->assertEquals("", $file->getSize());
+		$this->assertEquals("", $file->getTmpName());
+		$this->assertEquals("", $file->getError());
+	}
 
 }
