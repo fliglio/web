@@ -89,7 +89,7 @@ class FileUpload {
 	 * @return bool
 	 */
 	public function hasError() {
-		return $this->getError() == UPLOAD_ERR_OK;
+		return $this->getError() == UPLOAD_ERR_OK && is_uploaded_file($this->getTmpName());
 	}
 
 	/**
