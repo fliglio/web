@@ -34,4 +34,25 @@ class FileUploadTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals("", $file->getError());
 	}
 
+	public function testInValid_FileUpload() {
+		$file = new FileUpload([
+			"name" => "foo.jpg",
+			"type" => "image/jpg",
+			"size" => 12345,
+			"tmp_name" => "/tmp/123/asd23f",
+			"error" => UPLOAD_ERR_CANT_WRITE,
+		]);
+
+
+		$this->assertEquals("foo.jpg", $file->getName());
+		$this->assertEquals("image/jpg", $file->getType());
+		$this->assertEquals(12345, $file->getSize());
+		$this->assertEquals("/tmp/123/asd23f", $file->getTmpName());
+		$this->assertEquals(UPLOAD_ERR_CANT_WRITE, $file->getError());
+
+		$this->assertFalse($file->hasError());
+		$this->assertEquals("Failed to write file to disk", $file->getErrorMessage());
+	}
+
+
 }
